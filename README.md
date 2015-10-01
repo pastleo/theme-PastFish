@@ -18,11 +18,12 @@ $ omf u pastfish
 
 * Random greeting message
 * Command prompts colored based on time (morning is blue, afternoon is green, midnight is red ...)
+* The `>` at the end of each prompt will turn yellow if the git repo is dirty, red if current location is not writable
 
 ## Screenshot
 
 <p align="center">
-<img src="img/screenshot.png">
+<img src="http://i.imgur.com/YVM1Xo2.png">
 </p>
 
 # License
