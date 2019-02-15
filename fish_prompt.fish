@@ -4,14 +4,8 @@ function _is_git_dirty
 end
 
 function _inteval
-  if math "$argv[1] > $argv[2]" > /dev/null
-    echo (math "$argv[1] - $argv[2]")
-  else
-    echo (math "$argv[2] - $argv[1]")
-  end
+  math "abs($argv[1] - $argv[2])"
 end
-
-# COLOR is one of black, red, green, brown, yellow, blue, magenta, purple, cyan, white and normal.
 
 function fish_prompt
 
@@ -49,7 +43,7 @@ function fish_prompt
   # determine color of time
   switch $TERM
     case '*'256'*' # support 256color
-      set minToday (math (date +%H)"*12 + "(date +%M)"/5")
+      set minToday (math "round("(date +%H)"*12 + "(date +%M)"/5)")
       set color_R (echo "obase=16; "(math (_inteval $minToday 144)"+ 111") | bc)
       set color_G (echo "obase=16; "(math (_inteval (math "($minToday + 96) % 288") 144 )"+ 111") | bc)
       set color_B (echo "obase=16; "(math (_inteval (math "($minToday + 192) % 288") 144 )"+ 111") | bc)
